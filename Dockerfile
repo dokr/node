@@ -6,7 +6,7 @@ env NPM_CONFIG_PREFIX=/.npm-global
 env PATH=/.npm-global/bin:$PATH
 
 RUN apt-get update -y ;\
-	apt-get install -y nodejs npm make wget python
+	apt-get install -y nodejs npm make wget python cnpm
 
 RUN npm update && \
 	npm i npm@latest -g && \
@@ -14,8 +14,9 @@ RUN npm update && \
 
 ADD upx /usr/bin/upx
 
-RUN cd /usr/localwget && \
-	http://gosspublic.alicdn.com/ossutil/1.6.9/ossutil64 && \
-	chmod 755 ossutil64
+RUN cd /usr/local/bin/ && \
+	wget http://gosspublic.alicdn.com/ossutil/1.6.9/ossutil64 && \
+	chmod 755 ossutil64 && \
+	mv ossutil64 ossutil
 
 WORKDIR /opt
