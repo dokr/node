@@ -10,7 +10,7 @@ RUN apt-get update -y ;\
 
 RUN npm update && \
 	npm i npm@latest -g && \
-	npm install -g vue-cli cnpm
+	npm install -g vue-cli cnpm miniprogram-ci
 
 ADD upx /usr/bin/upx
 
